@@ -93,6 +93,24 @@ const data = {
     # takeWhile
       - Emits values emitted by the source observable so long as each value satisfies the given predicte, and the completes as soon as this prediction is not satisfied.
       - Simple takeWhile will check the condition and once satisfied it will execute it.
+            const number$ = interval(500);
+            number$
+              .pipe(
+                takeWhile((data) => {
+                  return data % 2 === 0 ? true : false;
+                }),
+                debounceTime(100)
+              )
+              .subscribe((data) => {
+                console.log(' |> ', data);
+              });
+
+    # takeLast
+      - wait for the source to complete, Then emits the last N value from the source, as specified by the count arguments.
+            const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            number$.pipe(takeLast(2)).subscribe((data) => {
+              console.log(' |> ', data);
+            });
       
 
 

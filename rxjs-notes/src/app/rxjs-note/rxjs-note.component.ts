@@ -13,6 +13,8 @@ import {
   interval,
   of,
   take,
+  takeLast,
+  takeWhile,
 } from 'rxjs';
 
 @Component({
@@ -105,4 +107,24 @@ export class RxjsNoteComponent implements OnInit, OnDestroy {
     });
   }
   // takeWhile operator
+  takeWhileOperator() {
+    const number$ = interval(500);
+    number$
+      .pipe(
+        takeWhile((data) => {
+          return data % 2 === 0 ? true : false;
+        }),
+        debounceTime(100)
+      )
+      .subscribe((data) => {
+        console.log(' |> ', data);
+      });
+  }
+  // takeLast operator
+  takeLastOperator() {
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    number$.pipe(takeLast(2)).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
 }
