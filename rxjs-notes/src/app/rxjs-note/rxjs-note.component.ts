@@ -34,8 +34,10 @@ import {
 export class RxjsNoteComponent implements OnInit, OnDestroy {
   @ViewChild('clickMe')
   clickMeButton: ElementRef | undefined;
+
   ngOnInit() {}
   ngOnDestroy() {}
+
   // Introcution to RxJs
   introductionToRxJs() {
     let userName$: Observable<string> | undefined;
@@ -192,14 +194,14 @@ export class RxjsNoteComponent implements OnInit, OnDestroy {
     });
   }
   // max operator
-  maxOperator(){
+  maxOperator() {
     const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
     number$.pipe(distinct(), max()).subscribe((data) => {
       console.log(' |> ', data);
     });
   }
   // max operator
-  minOperator(){
+  minOperator() {
     const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
     number$.pipe(distinct(), min()).subscribe((data) => {
       console.log(' |> ', data);

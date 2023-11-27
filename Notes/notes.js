@@ -54,6 +54,7 @@ const data = {
      - Multicasting
      - Error Handling
     `,
+
   Operators: `
     # of
       - of operator is used to create and observables for string, array and object.
