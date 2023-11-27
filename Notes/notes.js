@@ -112,9 +112,77 @@ const data = {
               console.log(' |> ', data);
             });
       
+    # first
+      - It will get the first value emitted by the observables.
+      - If at any instance we want the first value of observable we user first operator
+            const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+              number$.pipe(first()).subscribe((data) => {
+                console.log(' |> ', data);
+              });
 
+    # last
+      - It will get the last value emitted by the observables
+      - If at any instance we want the last value of observable we use last operator
+            const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            number$.pipe(last()).subscribe((data) => {
+              console.log(' |> ', data);
+            });
 
+    # ElementAt
+      - It will be used to get the particult value at inded when the value is emitted
+            const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            number$.pipe(elementAt(5)).subscribe((data) => {
+              console.log(' |> ', data);
+            });
 
+    # filter
+      - We used filter operator to filter out the data from observables.
+            const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            number$
+              .pipe(
+                filter((data) => {
+                  return data > 5;
+                })
+              )
+              .subscribe((data) => {
+                console.log(' |> ', data);
+              });
+
+    # distinct
+      - We use distinct when we want the distinct value from an observables
+              const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+              number$.pipe(distinct()).subscribe((data) => {
+                console.log(' |> ', data);
+              });
+
+    # skip 
+      - We use skip operator to skip the value.
+      - Example i want to skip the first 5 value we can use the skip operator
+              const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+              number$.pipe(distinct(), skip(3)).subscribe((data) => {
+                console.log(' |> ', data);
+              });
+
+    # count
+      - If we want to get the count of value emitted by operator we use count operator
+              const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+              number$.pipe(distinct(), count()).subscribe((data) => {
+                console.log(' |> ', data);
+              });
+
+    # max (works with numberical values)
+      - max operator take all the input value and return the max value from an observable
+              const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+              number$.pipe(distinct(), max()).subscribe((data) => {
+                console.log(' |> ', data);
+              });
+
+    # min (works with numerical value)
+      - min operator take all the input value and return the min value from an observable
+              const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+              number$.pipe(distinct(), min()).subscribe((data) => {
+                console.log(' |> ', data);
+              });
 
     `,
 };

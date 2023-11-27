@@ -7,11 +7,20 @@ import {
 } from '@angular/core';
 import {
   Observable,
+  count,
   debounceTime,
+  distinct,
+  elementAt,
+  filter,
+  first,
   from,
   fromEvent,
   interval,
+  last,
+  max,
+  min,
   of,
+  skip,
   take,
   takeLast,
   takeWhile,
@@ -124,6 +133,75 @@ export class RxjsNoteComponent implements OnInit, OnDestroy {
   takeLastOperator() {
     const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
     number$.pipe(takeLast(2)).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
+  //first operator
+  firstOperator() {
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    number$.pipe(first()).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
+  //last operator
+  lastOperator() {
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    number$.pipe(last()).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
+  // ElementAt operator
+  elementAtOperator() {
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    number$.pipe(elementAt(5)).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
+  // filter operator
+  filterOperator() {
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    number$
+      .pipe(
+        filter((data) => {
+          return data > 5;
+        })
+      )
+      .subscribe((data) => {
+        console.log(' |> ', data);
+      });
+  }
+  // Distinct operator
+  distinctOperator() {
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+    number$.pipe(distinct()).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
+  // skip operator
+  skipOperator() {
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+    number$.pipe(distinct(), skip(3)).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
+  // count operator
+  couuntOperator() {
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+    number$.pipe(distinct(), count()).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
+  // max operator
+  maxOperator(){
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+    number$.pipe(distinct(), max()).subscribe((data) => {
+      console.log(' |> ', data);
+    });
+  }
+  // max operator
+  minOperator(){
+    const number$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8]);
+    number$.pipe(distinct(), min()).subscribe((data) => {
       console.log(' |> ', data);
     });
   }
